@@ -26,6 +26,9 @@ const inventory = [
  * @param {Item[]} items - array of items
  */
 function logNames(items) {
+  items.forEach((groveryItem) => {
+    console.log(groveryItem.name);
+  });
   // TODO: use `forEach`
 }
 
@@ -34,6 +37,10 @@ function logNames(items) {
  * @returns {string[]} an array of item names in all uppercase
  */
 function getUppercaseNames(items) {
+  const upperCaseNames = items.map((groceryItem) =>
+    groceryItem.name.toUpperCase()
+  );
+  return upperCaseNames;
   // TODO: use `map`
 }
 
@@ -43,6 +50,8 @@ function getUppercaseNames(items) {
  * @returns {Item} - the item in `items` with the given `id`
  */
 function getItemById(items, id) {
+  const foundItem = items.find((groceryItem) => groceryItem.id === id);
+  return foundItem;
   // TODO: use `find`
 }
 
@@ -52,6 +61,11 @@ function getItemById(items, id) {
  * @returns {number} the price of the item named `name` if found
  */
 function getItemPriceByName(items, name) {
+  for (const item of items) {
+    if (item.name === name) {
+      return item.price;
+    }
+  }
   // TODO: use a loop!
 }
 
@@ -61,6 +75,8 @@ function getItemPriceByName(items, name) {
  * @returns {Item[]} array of items that belong to the given `category`
  */
 function getItemsByCategory(items, category) {
+  const results = items.filter((item) => item.category === category);
+  // console.log(results);
   // TODO: use `filter`
 }
 
@@ -69,6 +85,11 @@ function getItemsByCategory(items, category) {
  * @returns {number} the total quantity of all items
  */
 function countItems(items) {
+  const totalQuantity = items.reduce(
+    (totalQuantity, currentItem) => (totalQuantity += currentItem.quantity),
+    0
+  );
+  return totalQuantity;
   // TODO: use `reduce`
 }
 
@@ -77,6 +98,12 @@ function countItems(items) {
  * @returns {number} the cost of all given items
  */
 function getTotalPrice(items) {
+  const totalPrice = items.reduce(
+    (totalValue, currentItem) =>
+      total + currentItem.quantity * currentItem.price,
+    0
+  );
+  return totalPrice;
   // TODO: use `reduce`
 }
 
