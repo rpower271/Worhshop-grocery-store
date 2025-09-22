@@ -100,7 +100,7 @@ function countItems(items) {
 function getTotalPrice(items) {
   const totalPrice = items.reduce(
     (totalValue, currentItem) =>
-      total + currentItem.quantity * currentItem.price,
+      totalValue + currentItem.quantity * currentItem.price,
     0
   );
   return totalPrice;
